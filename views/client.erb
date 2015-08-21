@@ -4,13 +4,13 @@
   <h3>Here are all the Stylist for this Client:</h3>
 
   <ul>
-    <% @client.stylists().each() do |stylist| %>
+    <% @client.stylist().each() do |stylist| %>
       <li><%= stylist.name() %> </li>
     <% end %>
   </ul>
 
   <% else %>
-    <p>There are no tasks on this list!</p>
+    <p>There are no stylists for this client!</p>
 <% end %>
 
 <h3>Add a Stylist to <%= @client.name() %> </h3>
@@ -28,10 +28,12 @@
 
 <div class="container">
   <a href="/">Home</a>
-  <a href="/clients">View All Clients</a>
+</div>
+
+<div class="container">
   <a href="/clients/new">Add Client</a>
 </div>
 
 <div class="container">
-  <a href="/"><button class="btn">Home</a>
+  <a href="/clients">View All Clients</a>
 </div>
