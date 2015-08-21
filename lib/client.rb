@@ -28,13 +28,22 @@ class Client
 
   define_singleton_method(:find) do |id|
     found_client = nil
-      Client.all().each() do |client|
-        if client.id().==(id)
-          found_client = client
-        end
+    Client.all().each() do |client|
+      if client.id().==(id)
+        found_client = client
       end
+    end
     found_client
   end
 
-
+  define_method(:stylist) do
+    client_stylists = []
+    stylist = DB.exec("SELECT * FROM stylist WHERE client_id = #{self.id()};")
+    stylists.each() do |stylist|
+      name = stylist.fetch("name")
+      client_id = stylist.fetch("client_id").to_i()
+      client_stylists.push(Stylist.new({:name => name, :client_id => client_id}))
+    end
+    client_stylists
+  end
 end

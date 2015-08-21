@@ -49,15 +49,15 @@ describe(Client) do
     end
   end
 
-  # describe("#stylist") do
-  #     it("returns a stylist a client has gone too") do
-  #       test_client = Client.new({:name => "Bob", :id => nil})
-  #       test_client.save()
-  #       test_stylist = Stylist.new({:name => "Terry", :id => test_client.id()})
-  #       test_stylist.save()
-  #       test_stylist2 = Stylist.new({:name => "Kaylin", :id => test_client()})
-  #       test_stylist2.save()
-  #       expect(test_client.stylist()).to(eq([test_stylist, test_stylist2]))
-  #     end
-  #   end
+  describe("#stylist") do
+    it("returns a stylist a client has gone too") do
+      test_client = Client.new({:name => "Bob", :id => nil})
+      test_client.save()
+      test_stylist = Stylist.new({:name => "Terry", :client_id => test_client.id()})
+      test_stylist.save()
+      test_stylist2 = Stylist.new({:name => "Kaylin", :client_id => test_client.id()})
+      test_stylist2.save()
+      expect(test_client.stylists()).to(eq([test_stylist, test_stylist2]))
+    end
+  end
 end
