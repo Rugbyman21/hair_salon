@@ -7,12 +7,12 @@ class Client
   end
 
   define_singleton_method(:all) do
-    returned_client = DB.exec("SELECT * FROM client;")
+    returned_clients = DB.exec("SELECT * FROM client;")
     clients = []
-    returned_client.each() do |client|
+    returned_clients.each() do |client|
       name = client.fetch("name")
       id = client.fetch("id").to_i()
-      client.push(Client.new({:name => name, :id => id}))
+      clients.push(Client.new({:name => name, :id => id}))
     end
     clients
   end
@@ -21,4 +21,20 @@ class Client
    result = DB.exec("INSERT INTO client (name) VALUES ('#{@name}') RETURNING id;")
    @id = result.first().fetch("id").to_i()
  end
+
+ define_method(:==) do |another_client|
+    self.name().==(another_client.name()).&(self.id().==(another_client.id()))
+  end
+
+  define_singleton_method(:find) do |id|
+    found_client = nil
+      Client.all().each() do |client|
+        if client.id().==(id)
+          found_client = client
+        end
+      end
+    found_client
+  end
+
+
 end
