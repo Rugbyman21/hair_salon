@@ -1,0 +1,16 @@
+<h1>Your Current Clients</h1>
+
+<% if @clients.any?() %>
+  <h3>Here are your clients:</h3>
+
+  <ul>
+    <% @clients.each() do |client| %>
+      <li><a href="/clients/<%= client.id()%>"><%= client.name() %></a> </li>
+    <% end %>
+  </ul>
+
+<% else %>
+
+    <p>There are no clients yet!</p>
+
+<% end %>
