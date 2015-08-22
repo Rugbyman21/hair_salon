@@ -20,7 +20,11 @@ Install required gems:
 In psql:
 
   CREATE DATABASE hair_salon;
+
+  # \c hair_salon
+
   CREATE TABLE client (id serial PRIMARY KEY, name varchar);
+
   CREATE TABLE stylist (client_id serial PRIMARY KEY, description varchar);
 
 Start the webserver:
@@ -30,4 +34,4 @@ Start the webserver:
 Navigate to: localhost:4567 in the browser.
 
 License
-Copyright 2015 
+Copyright 2015
