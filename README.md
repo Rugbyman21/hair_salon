@@ -25,7 +25,7 @@ In psql:
 
   CREATE TABLE client (id serial PRIMARY KEY, name varchar);
 
-  CREATE TABLE stylist (client_id serial PRIMARY KEY, description varchar);
+  CREATE TABLE stylist (client_id serial PRIMARY KEY, name varchar);
 
 Start the webserver:
 
